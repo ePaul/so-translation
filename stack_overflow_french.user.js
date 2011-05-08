@@ -1,10 +1,17 @@
 // ==UserScript==
 // @name           Stack Overflow in French
-// @namespace      http://vennard.org.uk
+// @namespace      http://vennard.org.uk/greasemonkey/
 // @description    Provides a translation to the SO UI in French
 // @include        http://stackoverflow.com/*
 // ==/UserScript==
 
+//
+// The rationale behind this script is that it provides, or will
+// provide, the StackOverflow UI in French. Ideally, the SE
+// UI will handle this at some point, but a quick and dirty
+// script like this ought to provide a way to crowdsource
+// translations.
+//
 
 function with_jquery(f) {
   var script = document.createElement("script");
