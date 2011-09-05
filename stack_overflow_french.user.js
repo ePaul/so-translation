@@ -3,7 +3,14 @@
 // @namespace      http://vennard.org.uk/greasemonkey/
 // @description    Provides a translation to the SO UI in French
 // @include        http://stackoverflow.com/*
-// @include        http://french.stackexchange.com/*
+// @include        http://meta.stackoverflow.com/*
+// @include        http://superuser.com/*
+// @include        http://meta.superuser.com/*
+// @include        http://serverfault.com/*
+// @include        http://meta.askubuntu.com/*
+// @include        http://stackapps.com/*
+// @include        http://meta.stackapps.com/*
+// @include        http://*.stackexchange.com/*
 // ==/UserScript==
 
 //
@@ -27,6 +34,7 @@ with_jquery(function($) {
     StackText["Search"].setter = $('#search input').val;
     StackText["Search"].translation = "Recherchez";	*/
 
+    $('a[href$="/tools/"]').html("outils");
     $('#search input').val("Rechercher");
     $('#h-top-questions').html("Meilleurs Questions");
     $('a[href$="?tab=interesting"]').html("Interéssant");
@@ -79,7 +87,7 @@ $('a[href$="?tab=hot"]').html("Du Jour");
         items = str.split(" ");
         if ( items.length == 2 )
         {
-            $(this).html("Il y a " + items[0]); 
+            $(this).html("il y a " + items[0]); 
         }
         else
         {
@@ -87,7 +95,20 @@ $('a[href$="?tab=hot"]').html("Du Jour");
             if ( items[1] == "hour" ) { items[1] = "heure"; }
             if ( items[1] == "mins" ) { items[1] = "minutes" };
             if ( items[1] == "min" ) { items[1] = "minute" };
-            $(this).html("Il y a " + items[0] + " " + items[1]);
+            $(this).html("il y a " + items[0] + " " + items[1]);
+        }
+    });
+
+    $('.user-action-time').each(function(actiontimebox) {
+        str = $(this).html();
+        n = str.indexOf(" ");
+        word = str.substr(0, n);
+        if (word == "asked") word = "posée";
+        else if (word == "edited") word = "éditée";
+        else if (word == "answered") word = "postée";
+        else word = null;
+        if (word) {
+            $(this).html(word + str.substr(n));
         }
     });
 
@@ -104,9 +125,32 @@ $('a[href$="?tab=hot"]').html("Du Jour");
             if ( items[1] == "hour" ) { items[1] = "heure"; }
             if ( items[1] == "mins" ) { items[1] = "minutes" };
             if ( items[1] == "min" ) { items[1] = "minute" };
-            $(this).html("Il y a " + items[0] + " " + items[1]);
+            $(this).html("il y a " + items[0] + " " + items[1]);
         }
     });
+
+    $('.user-action-time').each(function(actiontimebox) {
+        str = $(this).html();
+        n = str.indexOf(" ");
+        word = str.substr(0, n);
+        if (word == "asked") word = "posée";
+        else if (word == "edited") word = "éditée";
+        else if (word == "answered") word = "postée";
+        else word = null;
+        if (word) {
+            $(this).html(word + str.substr(n));
+        }
+    });
+
+    /*$('answers-header.h2').each(function(answersbox) {
+        str = $(this).html();
+        $(this).html(str + " réponses");
+    });*/
+
+    /*$('answers-header.h2').each(function(answersbox) {
+        str = $(this).html();
+        $(this).html(str + " réponses");
+    });*/
 
     $('#h-related').html("Questions proches");
 
