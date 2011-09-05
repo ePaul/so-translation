@@ -3,6 +3,7 @@
 // @namespace      http://vennard.org.uk/greasemonkey/
 // @description    Provides a translation to the SO UI in French
 // @include        http://stackoverflow.com/*
+// @include        http://french.stackexchange.com/*
 // ==/UserScript==
 
 //
