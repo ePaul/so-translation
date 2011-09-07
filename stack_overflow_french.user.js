@@ -29,6 +29,130 @@ function with_jquery(f) {
 };
 
 with_jquery(function($) {
+
+        /**
+         * Parses an ISO-8601 formatted date (with spaces, `Z` time zone,
+         * and without seconds) into a Date object.
+         *
+         * Adapted from
+         * http://anentropic.wordpress.com/2009/06/25/javascript-iso8601-parser-and-pretty-dates/
+         */
+        function parseISO8601(str) {
+            // we assume str is a UTC date ending in 'Z'
+
+            var parts = str.split(' '), // use space instead of ' ', since that is used in SO.
+                dateParts = parts[0].split('-'),
+                timeParts = parts[1].split('Z'),
+                timeSubParts = timeParts[0].split(':'),
+                timeHours = Number(timeSubParts[0]),
+                _date = new Date;
+
+            _date.setUTCFullYear(Number(dateParts[0]));
+            _date.setUTCMonth(Number(dateParts[1])-1);
+            _date.setUTCDate(Number(dateParts[2]));
+            _date.setUTCHours(Number(timeHours));
+            _date.setUTCMinutes(Number(timeSubParts[1]));
+
+            // by using setUTC methods the date has already been converted to local time(?)
+            return _date;
+        }
+
+        /**
+         * translates a date object into a (native-language)
+         * relative time string.
+         *
+         * Adapted from http://stackoverflow.com/q/1248/600500.
+         */
+        function date_translate(date) {
+            var now = new Date();
+            var delta = (now.getTime() - date.getTime()) / 1000;
+
+            const round = function(n) {
+                return n.toFixed(0);
+            }
+
+            const SECOND = 1;
+            const MINUTE = 60 * SECOND;
+            const HOUR = 60 * MINUTE;
+            const DAY = 24 * HOUR;
+    
+            if (delta < 0)
+                {
+                    return "not yet"; // ???
+                }
+            if (delta < 1 * MINUTE)
+                {
+                    return "just now";  // to translate
+                }
+            if (delta < 2 * MINUTE)
+                {
+                    // one minute ago
+                    return "Il y a une minute";
+                }
+            if (delta < 45 * MINUTE)
+                {
+                    // some minutes ago
+                    return "Il y a " + round(delta/60) + " minutes";
+                }
+            if (delta < 90 * MINUTE)
+                {
+                    // one hour ago
+                    return "Il y a une heure";
+                }
+            if (delta < 24 * HOUR)
+                {
+                    return "Il y a " + round(delta/60/60) + " heures";
+                }
+            if (delta < 36 * HOUR)
+                {
+                    // yesterday
+                    return "hier";
+                }
+            if (delta < 30 * DAY)
+                {
+                    // some days ago
+                    return "Il y a " + round(delta/60/60/24) + " jours";
+                }
+            // even earlier
+
+            const MONTHS =
+                new Array("janv.", "févr.", "mars", "avr.",
+                          "mai", "juin", "juill.", "août",
+                          "sept.", "oct.", "nov.", "déc." );
+
+            var day = date.getUTCDate();
+            var monthnum = date.getUTCMonth();
+            var month = MONTHS[monthnum];
+            var year = date.getUTCFullYear();
+            //            alert( "le " + day + " " + month + " " + year);
+            var hour = date.getUTCHours();
+            var minute = date.getUTCMinutes();
+            if(minute < 10) {
+                minute = "0" + minute.toString();
+            }
+            
+            return "le " + day + " " + month + " " + year
+                + ", " + hour + ":" + minute;
+        }
+
+        /**
+         * Translates a span-element (given as this) with a relative time.
+         *
+         * The actual time is extracted from the title attribute,
+         * parsed into a date and then translated into a relative
+         * time string. This string is put as the text of this
+         * element.
+         */
+    function translate_relaTime() {
+            var datestr = $(this).attr("title");
+            var date = parseISO8601(datestr);
+            //            alert("date: " + date);
+            var translated = date_translate(date);
+            //            alert("translated: " + date);
+            $(this).text(translated);
+    }
+
+
     /*var StackText = new Array();
 
     StackText["Search"].setter = $('#search input').val;
@@ -82,22 +206,9 @@ $('a[href$="?tab=hot"]').html("Du Jour");
         $(this).html(votecount + "\n<div>visites</div");
     });
 
-    $('.relativetime').each(function(reltimebox) {
-        str = $(this).html();
-        items = str.split(" ");
-        if ( items.length == 2 )
-        {
-            $(this).html("il y a " + items[0]); 
-        }
-        else
-        {
-            if ( items[1] == "hours" ) { items[1] = "heures"; }
-            if ( items[1] == "hour" ) { items[1] = "heure"; }
-            if ( items[1] == "mins" ) { items[1] = "minutes" };
-            if ( items[1] == "min" ) { items[1] = "minute" };
-            $(this).html("il y a " + items[0] + " " + items[1]);
-        }
-    });
+
+
+    $('.relativetime').each(translate_relaTime);
 
     $('.user-action-time').each(function(actiontimebox) {
         str = $(this).html();
@@ -112,22 +223,7 @@ $('a[href$="?tab=hot"]').html("Du Jour");
         }
     });
 
-    $('span.comment-date span').each(function(reltimebox) {
-        str = $(this).html();
-        items = str.split(" ");
-        if ( items.length == 2 )
-        {
-            $(this).html("Il y a " + items[0]); 
-        }
-        else
-        {
-            if ( items[1] == "hours" ) { items[1] = "heures"; }
-            if ( items[1] == "hour" ) { items[1] = "heure"; }
-            if ( items[1] == "mins" ) { items[1] = "minutes" };
-            if ( items[1] == "min" ) { items[1] = "minute" };
-            $(this).html("il y a " + items[0] + " " + items[1]);
-        }
-    });
+    $('span.comment-date span').each(translate_relaTime);
 
     $('.user-action-time').each(function(actiontimebox) {
         str = $(this).html();
