@@ -22,13 +22,25 @@
 //
 
 function with_jquery(f) {
-  var script = document.createElement("script");
+  script = document.createElement("script");
   script.type = "text/javascript";
   script.textContent = "(" + f.toString() + ")(jQuery)";
   document.body.appendChild(script);
 };
 
+
 with_jquery(function($) {
+
+
+        // does not work here :-(
+        var translations = window.translations;
+        alert("translations: " + translations);
+
+        // neither this:
+        alert("translator:" + Translator);
+
+        var _ = Translator.GetTranslation;
+        
 
         /**
          * Parses an ISO-8601 formatted date (with spaces, `Z` time zone,
@@ -152,28 +164,24 @@ with_jquery(function($) {
             $(this).text(translated);
     }
 
+    alert("lator:" + Translator);
+
+    //    Translator.LoadTranslations("fr/dictionary.json");
+    Translator.AssignToDOM();
+
 
     /*var StackText = new Array();
 
     StackText["Search"].setter = $('#search input').val;
     StackText["Search"].translation = "Recherchez";	*/
 
-    $('a[href$="/tools/"]').html("outils");
-    $('#search input').val("Rechercher");
-    $('#h-top-questions').html("Meilleurs Questions");
-    $('a[href$="?tab=interesting"]').html("Interéssant");
-    $('a[href$="?tab=week"]').html("La semaine");
-    $('a[href$="?tab=month"]').html("Le mois");
-$('a[href$="?tab=hot"]').html("Du Jour");
-    $('#nav-questions').html("Questions");
-    $('#nav-unanswered').html("Sans réponse");
-    $('#nav-users').html("Membres");
-    $('#nav-askquestion').html("Demander");
-    $('#nav-tags').html("Balises");
-    $('#h-interesting-tags').html("Balises favourites");
-    $('#h-ignored-tags').html("Balises ignorées");
-    $('#h-recent-tags').html("Balises récente");
-    $('#h-recent-badges').html("Badges récent");
+    $('a[href$="/tools/"]').html(_("tools"));
+    $('#search input').val(_("tools"));
+    $('a[href$="?tab=interesting"]').html(_("interesting"));
+    $('a[href$="?tab=week"]').html(_("week"));
+    $('a[href$="?tab=month"]').html(_("month"));
+    $('a[href$="?tab=hot"]').html(_("hot"));
+
     $('a[href$="/badges"]').html("Balises");
     $('a[href$="/tags"]').html("Badges");
     $('a[href$="http://stackexchange.com/filters"]').html("Filtres de reseau");

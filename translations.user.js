@@ -1,3 +1,20 @@
+// ==UserScript==
+// @name           Translation helper.
+// @namespace      http://vennard.org.uk/greasemonkey/
+// @description    Helper object for the Stack Overflow translation.
+// @include        http://stackoverflow.com/*
+// @include        http://meta.stackoverflow.com/*
+// @include        http://superuser.com/*
+// @include        http://meta.superuser.com/*
+// @include        http://serverfault.com/*
+// @include        http://meta.askubuntu.com/*
+// @include        http://stackapps.com/*
+// @include        http://meta.stackapps.com/*
+// @include        http://*.stackexchange.com/*
+// ==/UserScript==
+
+
+
 //======================================
 //          translations.js
 //  Manages translations and implements
@@ -81,3 +98,5 @@ var Translator = {
 // For convenience's sake, we assign the function '_'
 // to the function Translator::GetTranslation
 _ = Translator.GetTranslation;
+
+// alert("lator:" + Translator);
