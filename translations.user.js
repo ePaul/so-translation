@@ -42,43 +42,6 @@ Translator = {
     // Storage variables
     translation_table: null,
     
-    // Loads the translations from the given
-    // URL using JSON
-    LoadTranslation: function(url, callback, method) {
-        
-        // Make the request to the URL.
-        var request = new XMLHttpRequest();
-        request.open((typeof method == 'undefined')?'GET':method, url, true);
-        
-        // Set the handler for the response
-        request.onreadystatechange = function() {
-            
-            if(request.readyState == 4)
-            {
-                // Convert the response text into JSON
-                // data.
-                try
-                {
-                    Translator.translation_table = JSON.parse(request.responseText);
-                    
-                    // Everything has succeeded, so call the callback
-                    // with the param. 'true'.
-                    callback(true);
-                }
-                catch(exception)
-                {
-                    // Something went wrong, so call the callback
-                    // specifying 'false' to indicate an error.
-                    callback(false);
-                }
-            }
-            
-        };
-        
-        // Now send off the request.
-        request.send();
-    },
-    
     // Gets the translation for a given key
     GetTranslation: function(key) {
         
@@ -108,10 +71,5 @@ Translator = {
         
     }
 };
-
-
-// For convenience's sake, we assign the function '_'
-// to the function Translator::GetTranslation
-_ = Translator.GetTranslation;
 
     });
