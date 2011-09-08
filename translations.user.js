@@ -25,7 +25,19 @@
 // translations and returning the proper translations
 // given a 'key' which is typically the English translation.
 
-var Translator = {
+function run_as_content(f) {
+  script = document.createElement("script");
+  script.type = "text/javascript";
+  script.textContent = "(" + f.toString() + ")()";
+  document.body.appendChild(script);
+  document.body.removeChild(script); // cleanup
+}
+
+run_as_content(function() {
+
+
+
+Translator = {
     
     // Storage variables
     translation_table: null,
@@ -76,27 +88,30 @@ var Translator = {
     },
     
     // This function makes it easy to assign translations
-    // to DOM elements by simply providing their ID as a key.
+    // to DOM elements by simply providing #ID as a key.
     AssignToDOM: function() {
         
         // Loop through the keys in the translation
         // table.
         for(var key in Translator.translation_table)
         {
-            // Eat the '#' if present.
-            if(key[0] == '#') key = key.substr(1);
+            if(key[0] == '#') {
+                // Eat the '#'
+                key = key.substr(1);
             
-            var element = document.getElementById(key);
-            
-            if(element != null)
-                element.innerHTML = Translator.translation_table[key];
+                var element = document.getElementById(key);
+                
+                if(element != null)
+                    element.innerHTML = Translator.translation_table["#" + key];
+            }
         }
         
     }
 };
 
+
 // For convenience's sake, we assign the function '_'
 // to the function Translator::GetTranslation
 _ = Translator.GetTranslation;
 
-// alert("lator:" + Translator);
+    });
