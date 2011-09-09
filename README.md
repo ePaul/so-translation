@@ -27,7 +27,7 @@ If you have multiple dictionaries (i.e. for different languages), the last one l
 --------------------
 
 * The [main meta question][meta]
-* The chat room
+* The [chat room][chat]
 
 We need more translations, improvements in the translation script, bug reports, and also praise :-)
 
@@ -52,5 +52,5 @@ French translations by [Ninefingers][] and [Gilles][].
 [sketchy-sprites]: http://cdn.sstatic.net/Skins/sketchy/img/sprites-beta.png?v=2
 [Ninefingers]: http://meta.stackoverflow.com/users/142852/ninefingers
 [Paŭlo]: http://meta.stackoverflow.com/users/156902/paulo-ebermann
-[George Edison][]: http://meta.stackoverflow.com/users/142114/george-edison
-[Gilles][]: http://meta.stackoverflow.com/users/149076/gilles
+[George Edison]: http://meta.stackoverflow.com/users/142114/george-edison
+[Gilles]: http://meta.stackoverflow.com/users/149076/gilles
