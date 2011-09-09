@@ -39,8 +39,10 @@ We need more translations, improvements in the translation script, bug reports, 
  Authors/Contributors
 ----------------------
 
-The current code is developed by [Ninefingers][] and [Paŭlo][], with the translation helper contributed by [George Edison][].
-French translations by [Ninefingers][] and [Gilles][].
+* The current code is developed by [Ninefingers][] and [Paŭlo][], with the translation helper contributed by [George Edison][].
+* French translation by [Ninefingers][] and [Gilles][].
+* German translation by [Paŭlo][].
+
 
 
 [German]: http://german.stackexchange.com/
