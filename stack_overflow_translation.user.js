@@ -229,7 +229,11 @@ with_jquery(function($) {
     $('a[href$="http://stackexchange.com/filters"]').html(_("tag subscriptions"));
     $('#ignoredAdd').val(_("Add"));
     $('#interestingAdd').val(_("Add"));
-    $('h2.bottom-notice').html(_("_bottom-notice_"));
+
+    var bottom_notice = _("_bottom-notice_");
+    if(bottom_notice != "_bottom-notice_") {
+        $('h2.bottom-notice').html(bottom_notice);
+    }
 
 
     function translate_miniCount(result, singular, plural) {
