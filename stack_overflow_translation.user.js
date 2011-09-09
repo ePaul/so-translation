@@ -281,7 +281,7 @@ with_jquery(function($) {
     $('a[id^="link-post-"]').html(_("link"));
     $('a[id^="flag-post-"]').html(_("flag"));
     $('a[id^="close-question-"]').html(_("close"));
-    $('a[href$="/edit"]').html("modifier");
+    $('a[href$="/edit"]').html(_("edit"));
 
     $('#answers a[class^="vote-up-"]').attr("title", _("This answer is useful (click again to undo)"));
     $('#answers a[class^="vote-down-"]').attr("title", _("This answer is not useful (click again to undo)"));

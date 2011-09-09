@@ -74,6 +74,7 @@ run_as_content(function() {
             "Your Answer" : "Votre réponse",
             "Post Your Answer" : "Téléchargez votre réponse",
             "link" : "lien",
+            "edit" : "modifier",
             "flag": "signaler",
             "close" : "fermer",
             "This answer is useful (click again to undo)" : "Cette réponse soit utile (clickez encore pour reverser)",
