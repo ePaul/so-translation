@@ -32,6 +32,11 @@
 //
 
 function with_jquery(f) {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "http://sprintf.googlecode.com/files/sprintf-0.7-beta1.js";
+  document.body.appendChild(script);
+
   script = document.createElement("script");
   script.type = "text/javascript";
   script.textContent = "(" + f.toString() + ")(jQuery)";

@@ -18,12 +18,6 @@
 function run_as_content(f) {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "http://sprintf.googlecode.com/files/sprintf-0.7-beta1.js";
-  document.body.appendChild(script);
-  document.body.removeChild(script); // cleanup
-
-  script = document.createElement("script");
-  script.type = "text/javascript";
   script.textContent = "(" + f.toString() + ")()";
   document.body.appendChild(script);
   document.body.removeChild(script); // cleanup
