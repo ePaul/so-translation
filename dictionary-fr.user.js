@@ -64,7 +64,7 @@ run_as_content(function() {
             "view" : "visite",
             "views" : "visites",
             // TODO: check the grammar (and maybe complete the sentence)
-            "one of the answers was accepted as the correct answer" :" une des réponses est acceptée",
+            "one of the answers was accepted as the correct answer" :" une des réponses est acceptée comme la ŕeponse la plus bénéfique",
             // intentionally with space:
             "asked " : "posée ",
             "edited " : "éditée ",
@@ -81,10 +81,10 @@ run_as_content(function() {
             "This answer is not useful (click again to undo)" : "Cette réponse soit inutile (clickez encore pour reverser)",
 
             // TODO: needs full translation
-            "This question shows research effort; it is useful and clear (click again to undo)" : "Cette question soit utile (clickez encore pour reverser)",
-            "This question does not show any research effort; it is unclear or not useful (click again to undo)" : "Cette question soit inutile (clickez encore pour reverser)",
+            "This question shows research effort; it is useful and clear (click again to undo)" : "Cette question montre un effort pour rechercher le problème; c'est clair et utile (clickez encore pour reverser)",
+            "This question does not show any research effort; it is unclear or not useful (click again to undo)" : "Cette question ne montre aucun effort pour rechercher le problème; ce n'est pas clair ou utile (clickez encore pour reverser)",
 
-            "This is a favorite question (click again to undo)" : "This is a favorite question (click again to undo)",
+            "This is a favorite question (click again to undo)" : "Markez comme question favorite (clickez encore pour reverser)",
             "View upvote and downvote totals" : "Voir les totales plus et minus.",
 
             "_month_names_" : [ "janv.", "févr.", "mars", "avr.",
