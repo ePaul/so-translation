@@ -56,7 +56,7 @@ run_as_content(function() {
             "%s days ago" : "il y a %s jours",
             "tag subscriptions" : "Filtres de reseau",
             "Add" : "Ajoutez",
-            "_bottom-notice_": "Pour en cherchez plus? Voir le <a href=\"/questions\">liste complét de questions</a>, ou <a href=\"/tags\">badges</a>. Assistez-vous répondre aux <a href=\"/unanswered\">questions sans réponse</a>.",
+            "_bottom-notice_": "Pour en cherchez plus? Voir le <a href=\"/questions\">liste complét de questions</a>, ou <a href=\"/tags\">étiquettes</a>. Assistez-vous répondre aux <a href=\"/unanswered\">questions sans réponse</a>.",
             "votes" : "votes",
             "vote" : "vote",
             "answers" : "réponses",
