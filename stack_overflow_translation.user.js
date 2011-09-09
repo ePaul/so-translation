@@ -49,7 +49,7 @@ with_jquery(function($) {
         // neither this:
         //        alert("translator:" + Translator);
 
-        Translator.translation_table = translations;
+        Translator.translation_table = window.translations;
 
         /**
          * a translating function, with optional more arguments.
