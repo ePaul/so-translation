@@ -16,9 +16,17 @@ Install the user scripts into your browser. You need:
 * The translation helper script (helper-for-translations.user.js)
 * The actual translation script (stack_overflow_translation.user.js)
 
-In Opera, put them into a directory and configure that directory as your user script directory (Settings => extended => contents  => JavaScript options => User Javascript directory).
+In Opera, put them into a directory and configure that directory as your user 
+script directory (Settings => extended => contents  => JavaScript options => User Javascript directory).
 
-In Firefox, install the [GreaseMonkey][] addon (if you didn't already), then install these as user scripts (simply clicking on the file should give you the link). Install them in the order listed above, or afterwards reorder them in this order (the translation script needs to be last).
+In Firefox, install the [GreaseMonkey][] addon (if you didn't already), then install 
+these as user scripts (simply clicking on the file should give you the link). Install 
+them in the order listed above, or afterwards reorder them in this order (the 
+translation script needs to be last). The greasemonkey plugin in firefox allows you 
+to edit the order of execution of scripts - ensure the dictionary you wish to use is 
+executed before the translation file.
+
+Note that firebug is known to have some problems when combined with greasemonkey.
 
 If you have multiple dictionaries (i.e. for different languages), the last one loaded will be used.
 
