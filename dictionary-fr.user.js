@@ -87,6 +87,9 @@ run_as_content(function() {
             "This is a favorite question (click again to undo)" : "Markez comme question favorite (clickez encore pour reverser)",
             "View upvote and downvote totals" : "Voir les totales plus et minus.",
 
+            "vote to close or reopen question; when closed, no new answers can be added" : "votez pour fermer ou réouvrir cette question; quand fermé il est interdit d'ajouter les autres réponses.",
+            "more vote(s) needed to close this question" : "vote(s) plus est nécessaire pour fermer cette question",
+
             "_month_names_" : [ "janv.", "févr.", "mars", "avr.",
                                 "mai", "juin", "juill.", "août",
                                 "sept.", "oct.", "nov.", "déc." ],

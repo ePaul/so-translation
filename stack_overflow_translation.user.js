@@ -303,6 +303,28 @@ with_jquery(function($) {
             });
     }
 
+    function translate_votelink(type, elem)
+    {
+        var elem_str = elem.html();
+        var result = "";
+
+        result = _(type);
+        console.log(elem_str);
+        var voted = elem_str.match(/\([1-5]{1}\)/);
+        console.log(voted);
+        if ( voted != null )
+        {
+            var votes = Number(elem_str.match(/\([1-5]{1}\)/)[0].replace("(", "").replace(")", ""));
+            var remain = 5 - votes;
+            result += " <span title=\"" + String(remain) + " " + _("more vote(s) needed to close this question") + "\"> (" + String(votes) + ")</span>";
+        };
+        elem.html(result);
+        elem.attr("title", _("vote to close or reopen question; when closed, no new answers can be added"));
+    }
+
+    translate_votelink("close", $('a[id^="close-question-"]'));
+    $('a[href$="/edit"]').html(_("edit"));
+
     translate_miniCount($(".votes"), _("vote"), _("votes"));
     translate_miniCount($(".status"), _("answer"), _("answers"));
     translate_miniCount($(".views"), _("view"), _("views"));
@@ -340,8 +362,7 @@ with_jquery(function($) {
     $('#submit-button').val(_("Post Your Answer"));
     $('a[id^="link-post-"]').html(_("link"));
     $('a[id^="flag-post-"]').html(_("flag"));
-    $('a[id^="close-question-"]').html(_("close"));
-    $('a[href$="/edit"]').html(_("edit"));
+
 
     $('#answers a[class^="vote-up-"]').attr("title", _("This answer is useful (click again to undo)"));
     $('#answers a[class^="vote-down-"]').attr("title", _("This answer is not useful (click again to undo)"));
